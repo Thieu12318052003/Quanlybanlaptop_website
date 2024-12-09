@@ -1,0 +1,38 @@
+{% extends 'user/base.html' %}
+
+{% block title %}Web bán Laptop{% endblock %}
+
+{% block content %}
+<div class="danhsach">
+            <div id="tencacmuc">
+                <i class="fa-solid fa-house"></i>
+                <label>Thông tin sản phẩm</label>
+            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{{ url_for('static', filename=laptop.Anh) }}" alt="{{ laptop.TenLapTop }}" class="img-fluid">
+            <a href="#" class="btn btn-primary" style="margin-left: 30px;margin-top: 20px" onclick="addToCart({{ laptop.id }},'{{ laptop.MaLapTop}} ', '{{ laptop.TenLapTop}} ',{{ laptop.DonGiaBan }} )">Them vao gio hang</a>
+
+        </div>
+        <div class="col-md-9">
+            {% if laptop %}
+                    <h1>{{ laptop.TenLapTop }}</h1>
+                    <p><b>Mã LapTop:</b> {{ laptop.MaLapTop }}</p>
+                    {% if nsx %}
+                        <p><b>Hãng:</b> {{ nsx.TenNSX }}</p>
+                    {% endif %}
+                    <p><b>Ram:</b> {{ laptop.Ram }}</p>
+                    <p><b>Cpu:</b> {{ laptop.Cpu }}</p>
+                    <p><b>Độ phân giải:</b> {{ laptop.DoPhanGiai }}</p>
+                    <p><b>Kích thước màn hình:</b> {{ laptop.KichThuocMH }}</p>
+                    <p><b>Ổ cứng:</b> {{ laptop.OCung }}</p>
+                    <p><b>Còn:</b> {{ laptop.SoLuong }} Laptop</p>
+                    <p><b>Giá:</b> {{ "{:,.0f} VNĐ".format(laptop.DonGiaBan) }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,234 @@
+<!-- MY HEAD -->
+
+    <!-- banner dau trang -->
+    <div id="mybanner">
+        <div class="row text-center p-0 m-0">
+            <div id="banner_1" class="col-md p-0">
+                <img src="/Ảnh/banner/sale.png" alt="">
+            </div>
+            <div class="col-md p-0">
+                <img src="/Ảnh/banner/banner_dai.png" alt="">
+            </div>
+            <div id="banner_3" class="col-md p-0">
+                <img src="/Ảnh/banner/sale_2.png" alt="">
+            </div>
+
+        </div>
+    </div>
+    <div id="thongtinbanner">WEBKINHDOANHDOUONG.VN | APP NTV6 | PHIẾU QUÀ TẶNG PHƯƠNG NAM</div>
+    <!-- thanh cong cu -->
+    <div id="thanhcongcu">
+        <div class="logo">
+            <h1>Nhóm 2</h1>
+        </div>
+        <div class="timkiem">
+            <div class="container-fluid">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" name="search_kw" placeholder="Nhập tên laptop" aria-label="Search">
+                    <button class="btn btn-outline-warning" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="hotline">
+            <div class="thanhphancon">
+
+                <i class="fa-solid fa-phone text-danger"> HOTLINE</i><br>
+                <strong>0123456789</strong>
+            </div>
+        </div>
+        <div class="giohang">
+            <div class="thanhphancon">
+                <a class="nav-link text-success" href="{{ url_for('cart') }}" >
+                <i class="fa-solid fa-cart-shopping fs-4"></i><br>
+                Giỏ hàng<span class="black cart-counter"> {{ cart_stats.total_quantity }}</span>
+                </a>
+            </div>
+        </div>
+        <div class="dangnhap">
+            <a href="#">
+                <i class="fa-solid fa-circle-user fs-1"></i>
+            </a>
+        </div>
+    </div>
+<!-- menu an -->
+    <div id="menu_an" class="menu">
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">MENU</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                    aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">DANH MỤC SẢN PHẨM</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <form class="d-flex mt-3" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-success" type="submit">Search</button>
+                            </form>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><strong>></strong> Trang chủ</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Các hãng LapTop
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    {% for c in NSX  %}
+                                    <li><a class="dropdown-item" href="#"><strong>></strong> {{c.TenNSX}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    menu cap 1
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#"><strong>></strong> 5.000.000</a></li>
+                                    <li><a class="dropdown-item" href="#"><strong>></strong> 10.000.000 -> 15.000.000</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    CPU
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    {% for c in catgories %}
+                                    <li><a class="dropdown-item" href="#"><strong>></strong> {{c.name}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    RAM
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    {% for c in catgories %}
+                                    <li><a class="dropdown-item" href="#"><strong>></strong> {{c.name}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Kích thước màn hình
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    {% for c in catgories %}
+                                    <li><a class="dropdown-item" href="#"><strong>></strong> {{c.name}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- MY BODY -->
+
+    <div id="mybody">
+        <!-- menu hien -->
+        <div id="menu" class="menu">
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action text-danger py-3">
+                    <i class="fa-solid fa-circle-plus fs-6"></i>
+                    <h6 style="display: inline;">Danh mục các sản phẩm</h6>
+                </a>
+                        <a href="/" class="list-group-item list-group-item-action"><strong>></strong> Trang chủ</a>
+
+                    <li class="list-group-item list-group-item-action" >
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            > Các hãng LapTop
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            {% for c in NSX %}
+                            <li><a class="dropdown-item" href="{{ url_for('index', NSX_id=c.id)}}"><strong>></strong> {{c.TenNSX}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="list-group-item list-group-item-action" >
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            > Phân khúc giá
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="/?giakhoang=10000000"><strong>></strong> dưới 10.000.000</a></li>
+                            <li><a class="dropdown-item" href="/?gia=10000000&giakhoang=15000000"><strong>></strong> 10.000.000 -> 15.000.000</a></li>
+                            <li><a class="dropdown-item" href="/?gia=15000000&giakhoang=20000000"><strong>></strong> 15.000.000 -> 20.000.000</a></li>
+                            <li><a class="dropdown-item" href="/?gia=20000000&giakhoang=25000000"><strong>></strong> 20.000.000 -> 25.000.000</a></li>
+                            <li><a class="dropdown-item" href="/?gia=30000000"><strong>></strong> 30.000.000 trở lên</a></li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item list-group-item-action" >
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            > CPU
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            {% for cpu in unique_cpu_values %}
+                                <li><a class="dropdown-item" href="{{ url_for('index', Cpu=cpu) }}"><strong>></strong> {{ cpu }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="list-group-item list-group-item-action" >
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            > RAM
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            {% for ram in unique_ram_values %}
+                                <li><a class="dropdown-item" href="{{ url_for('index', Ram=ram) }}"><strong>></strong> {{ ram }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="list-group-item list-group-item-action" >
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            > Kích thước màn hình
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            {% for ktmh in unique_ktmh_values %}
+                                <li><a class="dropdown-item" href="{{ url_for('index', KichThuocMH=ktmh) }}"><strong>></strong> {{ ktmh }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+
+                <a class="list-group-item list-group-item-action text-danger py-3">
+                    <i class="fa-solid fa-circle-plus fs-6"></i>
+                    <h6 style="display: inline;">Website</h6>
+                </a>
+                {% if current_user.is_authenticated %}
+                <a href="{{url_for('index')}}" class="list-group-item list-group-item-action">
+                    {% if current_user.avatar %}
+                        <img src="{{current_user.avatar}}" width="40" alt="{{current_user.name}}" />
+                    {% else %}
+                        <img src="{{url_for('static',filename='images/facebook.png')}}" width="40" alt="{{current_user.name}}" />
+                    {% endif %}
+                    {{ current_user.Username }}
+                </a>
+                <a href="{{url_for('user_dangxuat')}}" class="list-group-item list-group-item-action"><strong>></strong> Dang xuat</a>
+                {% else %}
+                <a href="{{url_for('user_dangky')}}" class="list-group-item list-group-item-action"><strong>></strong> Dang ky</a>
+                <a href="{{url_for('user_dangnhap')}}" class="list-group-item list-group-item-action"><strong>></strong> Dang nhap</a>
+                {% endif %}
+                <a href="#" class="list-group-item list-group-item-action"><strong>></strong> Tin tức</a>
+
+            </div>
+
+        </div>

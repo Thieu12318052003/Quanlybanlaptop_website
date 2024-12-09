@@ -1,0 +1,47 @@
+{% extends 'user/base.html' %}
+
+{% block title %}Web bán Laptop{% endblock %}
+<script src="{{ url_for('static', filename='js/cart.js')}}"></script>
+
+{% block content %}
+<!-- danh sach -->
+<div class="danhsach">
+    <div class="text-center">
+        {% if laptops %}
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 p-0 m-0">
+            {% for lt in laptops %}
+            <div class="col p-0">
+                <a href="{{ url_for('laptop_details', laptop_id=lt.id) }}">
+                    <div class="anh">
+                        <img src="{{ url_for('static', filename=lt.Anh) }}" alt="{{ lt.TenLapTop }}"><br>
+                        <label style="color:black;margin-bottom: 3px;"><b>Mã LapTop: {{ lt.MaLapTop }}</b></label><br>
+                        <label style="color:#1aece5;margin-bottom: 3px;"><b>{{ lt.TenLapTop }}</b></label><br>
+                        <label style="color:black;">Ram {{ lt.Ram }}, Cpu {{ lt.Cpu }}, {{ lt.DoPhanGiai }}, {{ lt.KichThuocMH }}, {{ lt.OCung }}</label>
+                        <label style="margin-bottom: 3px;"><b>{{ "{:,.0f} VNĐ".format(lt.DonGiaBan) }}</b></label>
+                        <br>
+                        <a href="#" class="btn btn-primary" onclick="addToCart({{ lt.id }},'{{ lt.MaLapTop}} ', '{{ lt.TenLapTop}} ',{{ lt.DonGiaBan }}, '{{ lt.Anh}} ')">Đặt Hàng</a>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p><i>Không có sản phẩm nào</i></p>
+        {% endif %}
+    </div>
+
+    <!-- Phân trang -->
+    <div class="d-flex justify-content-center mt-4">
+        <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="{{ url_for('index',page=1)}}">1</a></li>
+                <li class="page-item"><a class="page-link" href="{{ url_for('index',page=2)}}">2</a></li>
+                <li class="page-item"><a class="page-link" href="{{ url_for('index',page=3)}}">3</a></li>
+                <li class="page-item"><a class="page-link" href="{{ url_for('index',page=4)}}">4</a></li>
+
+        </ul>
+    </div>
+    </div>
+</div>
+
+{% endblock %}

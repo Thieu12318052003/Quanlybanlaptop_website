@@ -1,0 +1,89 @@
+{% extends 'user/base.html' %}
+
+{% block title %}Giỏ hàng{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center text-danger mb-4">Giỏ hàng của bạn</h1>
+    <div class="row">
+        <!-- Phần giỏ hàng -->
+        <div class="col-md-8">
+            {% if 'cart' in session and session['cart'] %}
+            <div class="table-responsive">
+                <table class="table table-bordered text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Hình ảnh</th>
+                            <th>Mã sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in session['cart'].values() %}
+                        <tr id="laptop{{ c.id }}">
+                            <td>
+                                <img src="{{ url_for('static', filename=c.Anh) }}" alt="Ảnh sản phẩm" style="width: 100px; height: auto;" loading="lazy">
+                            </td>
+                            <td>{{ c.id }}</td>
+                            <td>{{ c.TenLapTop }}</td>
+                            <td>{{ c.DonGiaBan }}</td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="number"
+                                           min="1"
+                                           onblur="update_cart({{ c.id }}, this)"
+                                           value=" {{ c.quantity }}"
+                                           class="form-control" />
+                                </div>
+                            </td>
+                            <td>
+                                <input type="button"
+                                       onclick="deleteCart({{ c.id }})"
+                                       value="Xóa"
+                                       class="btn btn-danger">
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="alert alert-info">
+                <h5>Tổng số sản phẩm:<span class="cart-counter"> {{ stats.total_quantity }}</span></h5>
+                <h5>Tổng tiền: <span id="total-amount">{{ "{:,.1f}".format(stats.total_amount) }}</span> VND</h5>
+            </div>
+            {% if current_user.is_authenticated %}
+            <input type="button" value="Thanh toán" class="btn btn-danger" onclick="Thanhtoan()" />
+            {% else %}
+            <a href="{{ url_for('user_dangnhap', next='cart') }}" class="btn btn-primary">Đăng nhập để thanh toán</a>
+            {% endif %}
+            <br>
+            {% else %}
+            <p class="text-center"><i>Không có sản phẩm nào trong giỏ hàng.</i></p>
+            {% endif %}
+        </div>
+
+        <!-- Phần thông tin khách hàng -->
+<!--        <div class="col-md-4">-->
+<!--            <h2>Thông tin khách hàng</h2>-->
+<!--            <form method="post" action="{{ url_for('user_dangky') }}">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="Name">Họ tên</label>-->
+<!--                    <input type="text" class="form-control" id="Name" name="Name" required />-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="Email">Địa chỉ</label>-->
+<!--                    <input type="email" class="form-control" id="Email" name="Email" />-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="confirm">Số điện thoại</label>-->
+<!--                    <input type="password" class="form-control" id="confirm" name="confirm" />-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+    </div>
+</div>
+</div>
+{% endblock %}

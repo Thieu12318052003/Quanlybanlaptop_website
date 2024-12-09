@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css')}}"></head>
+</head>
+<body>
+<div class="container">
+<h1 class="text-center text-danger">DANG KY NGUOI DUNG</h1>
+
+{% if err_msg %}
+<div class="alert alert-danger">
+    <h4>{{ err_msg }}</h4>
+</div>
+{% endif %}
+<form method="post" action="{{url_for('user_dangky')}}">
+    <div class="form-group">
+        <label for="Name">Ho Ten</label>
+        <input type="text" class="form-control" id="Name" name="Name" required />
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" />
+    </div>
+    <div class="form-group">
+        <label for="Username">Ten dang nhap</label>
+        <input type="text" class="form-control" id="Username" name="Username" />
+    </div>
+    <div class="form-group">
+        <label for="Password">Mat khau</label>
+        <input type="password" class="form-control" id="Password" name="Password" required />
+    </div>
+    <div class="form-group">
+        <label for="confirm">Xac nhan mat khau</label>
+        <input type="password" class="form-control" id="confirm" name="confirm" />
+    </div>
+    <input type="submit"  value="Dang ky" class="btn btn-danger" />
+    </div>
+    </div>
+</div>
+</form>
+</body>
+</html>
